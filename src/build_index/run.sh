@@ -1,12 +1,5 @@
 #!/bin/bash
 
-###
-# $1: input_reference
-# $2: index_prefix
-# $3: log_file
-###
-
-# bowtie2-build -f $1 $2 > $3
 
 
 
