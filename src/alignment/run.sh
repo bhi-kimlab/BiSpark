@@ -4,6 +4,7 @@ nodes=1
 input="hdfs:////test/data/100_000.fa"
 # input="hdfs:////test/data/1000.myf"
 output="hdfs:///test/result/test_100_000"
+ref="hdfs:///test/ref/chr1"
 
 hdfs dfs -rm -r -f $output
 
@@ -18,7 +19,7 @@ hdfs dfs -rm -r -f $output
   "${basepath}/align.py" \
   --input $input \
   --output $output \
-  --ref "hdfs:///test/ref/chr1" \
+  --ref $ref \
   --log "/home/dane2522/project/SparkMethyl/SparkMethyl/exp/test_100_000/log.txt" \
   --local_save "/home/dane2522/project/SparkMethyl/SparkMethyl/exp/test_100_000/alignment.txt" \
   --nodes $nodes \

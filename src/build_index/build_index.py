@@ -24,6 +24,7 @@ conv_way = ["W_C2T", "C_C2T", "W_G2A", "C_G2A"]
 def build_index( args):
   i_file = args.input
 
+  utils.logging("[INFO] Start downloading reference file.", args)
   tempbase = utils.gen_file()
   utils.mkdir(tempbase)
   reffile = os.path.join( tempbase, "raw.fa" )
@@ -32,6 +33,7 @@ def build_index( args):
   tempfiles = [ open(os.path.join(tempbase, "%s.fa"%m), 'w') for m in conv_way ]
 
 
+  utils.logging("[INFO] Start transforming reference file.", args)
   # read ref
   for chrid, seq in utils.read_fasta( reffile):
     for i, method in enumerate(conv_way):
@@ -47,7 +49,8 @@ def build_index( args):
   for i, method in enumerate(conv_way):
     tempfiles[i].close()
 
-  # run jobs
+  utils.logging("[INFO] Start launching bowtie2-build.", args)
+  # run bowtie jobs
   procs = []
 
   utils.mkdir( os.path.join(tempbase, "index") )
@@ -63,6 +66,7 @@ def build_index( args):
     proc.join()
 
 
+  utils.logging("[INFO] Start uploading index file.", args)
   # move to hdfs
   utils.copy_to_hdfs(tempbase, args.output, remove_original=True)
   # utils.copy_to_hdfs(tempbase, args.output, remove_original=False)
@@ -73,11 +77,12 @@ def build_index( args):
 
 # input: method
 # return: processed_file_name
-def call_bowtie(input_ref, out_pref, log_path):
-  print(input_ref, out_pref, log_path)
+def call_bowtie(input_ref, out_pref, log):
+  query = ["bowtie2-build", "-f", input_ref, out_pref]
+  utils.logging("[INFO] bowtie2-build is called as: %s" % (" ".join(query)), args)
   # make index with transformed genome
-  f = open(log_path, 'w')
-  p = subprocess.Popen(["bowtie2-build", "-f", input_ref, out_pref], stdout=f)
+  f = open(log, 'w')
+  p = subprocess.Popen(query, stdout=f)
   p.communicate()
 
 
@@ -91,15 +96,19 @@ if __name__ == "__main__":
   ### args
   parser.add_argument("--input", type=str, default="", help="input reference file")
   parser.add_argument("--output", type=str, default="", help="output reference path")
-  parser.add_argument("--log_path", type=str, default="", help="log path")
+  parser.add_argument("--log", type=str, default="", help="log path")
 
   parser.parse_args()
   args, unparsed = parser.parse_known_args()
 
-  utils.mkdir( os.path.dirname(args.log_path) )
+  utils.logging("[INFO] Building index of <%s> is launched." % (args.input), args)
+  for k, v in vars(args).iteritems():
+    utils.logging("[INFO] Loggin arguments: %s : %s." % (str(k), str(v)), args)
+
+  utils.mkdir( os.path.dirname(args.log) )
 
   if args.input == "" or args.output == "":
-    print("[ERROR] Input and Output File must be correctly set.")
+    utils.logging("[ERROR] Input and Output File must be correctly set.", args)
     sys.exit()
 
   build_index( args)
