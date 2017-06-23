@@ -26,6 +26,8 @@ def mapping(i, pref, methods, ptn, args):
   # check file existence
   iPath = os.path.join( args.tempbase, "iv_%s_%d.fa" % (pref, i) )
 
+  if not os.path.exists( args.tempbase ):
+    os.makedirs( args.tempbase )
   save_pair( iPath, ptn )
 
   # run bowtie2
