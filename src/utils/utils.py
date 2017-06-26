@@ -135,6 +135,9 @@ def convert_to_myf(inf, outf, remove_tmp=True):
 # logging
 ###
 def logging(s, args):
+  logdir = os.path.dirname( args.log )
+  mkdir( logdir )
+
   s = "%s: %s" % (datetime.now(), s)
   with open(args.log, 'a') as fw:
     fw.write("%s\n" % s)

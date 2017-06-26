@@ -28,8 +28,9 @@ def align(sc, args):
               .map( lambda x: g_utils.line2kv( x))
 
   if args.testmode == "balancing":
-    readRDD = readRDD.repartition( args.nodes ) \
-                      .cache()
+    readRDD = readRDD.partitionBy( args.nodes ) \
+                      
+  readRDD = readRDD.cache()
 
 
   ## transform and get result of bowtie
@@ -41,18 +42,18 @@ def align(sc, args):
 
 
   
-  combRDD = sc.union( [readRDD, c2tMapRDD, g2aMapRDD] )\
-              .combineByKey( lambda v: [v],\
-                            lambda lst, v: lst + [v],\
-                            lambda l1, l2: l1 + l2 )\
-              .mapValues( lambda x: a_utils.select_and_find_uniq_alignment( x))\
-              .filter( lambda (k, v): not (v is None))
+  mergedRDD = sc.union( [readRDD, c2tMapRDD, g2aMapRDD] )
+  combRDD = mergedRDD.combineByKey( lambda v: [v],\
+                                    lambda lst, v: lst + [v],\
+                                    lambda l1, l2: l1 + l2 )
+  filteredRDD = combRDD.mapValues( lambda x: a_utils.select_and_find_uniq_alignment( x))\
+                        .filter( lambda (k, v): not (v is None))
 
   if args.testmode == "balancing":
-    combRDD = combRDD.repartition( args.nodes )
+    filteredRDD = filteredRDD.partitionBy( args.nodes )
                   
 
-  methylRDD = combRDD.map( lambda x: a_utils.calc_methyl(x, bc_refdict.value) )
+  methylRDD = filteredRDD.map( lambda x: a_utils.calc_methyl(x, bc_refdict.value) )
 
   result_path = os.path.join( args.output, "alignment" )
   methylRDD.map( lambda x: a_utils.res_to_string(x) ).saveAsTextFile( result_path )
@@ -125,7 +126,7 @@ if __name__ == "__main__":
   
 
   # remove temp files
-  utils.rm_rf(args.tempbase)
+  # utils.rm_rf(args.tempbase)
 
   # for DEBUG
   if args.local_save != "":

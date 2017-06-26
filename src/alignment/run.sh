@@ -1,9 +1,9 @@
 
 basepath=$(dirname $0)
 nodes=1
-input="hdfs:////test/data/100_000.fa"
-# input="hdfs:////test/data/1000.myf"
-output="hdfs:///test/result/test_100_000"
+# input="hdfs:////test/data/100_000.fa"
+input="hdfs:////test/data/1000.myf"
+output="hdfs:///test/result/test_1000"
 ref="hdfs:///test/ref/chr1"
 
 hdfs dfs -rm -r -f $output
@@ -20,9 +20,9 @@ hdfs dfs -rm -r -f $output
   --input $input \
   --output $output \
   --ref $ref \
-  --log "/home/dane2522/project/SparkMethyl/SparkMethyl/exp/test_100_000/log.txt" \
-  --local_save "/home/dane2522/project/SparkMethyl/SparkMethyl/exp/test_100_000/alignment.txt" \
+  --log "/home/dane2522/project/SparkMethyl/SparkMethyl/exp/test_1000_3/log.txt" \
+  --local_save "/home/dane2522/project/SparkMethyl/SparkMethyl/exp/test_1000_3/alignment.txt" \
   --nodes $nodes \
-  --testmode "balancing" \
-  --appname "100_000_balancing_test"
+  --testmode "plain" \
+  --appname "1000_plain_test"
 
