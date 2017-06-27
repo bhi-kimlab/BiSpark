@@ -112,6 +112,9 @@ if __name__ == "__main__":
   ## preprocess for input file
   input_ext = os.path.splitext(args.input)[1]
 
+  ## node--
+  args.nodes = args.nodes - 1
+
   if input_ext != ".myf":
     utils.logging("[INFO] Transform input file to myf.", args)
     myf_input = os.path.join(args.output, "input.myf")
