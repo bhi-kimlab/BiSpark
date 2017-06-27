@@ -5,6 +5,7 @@ from pyspark.shuffle import ExternalSorter
 from pyspark.rdd import _parse_memory
 import argparse
 import os
+import time
 
 
 def align(sc, args):
@@ -126,7 +127,11 @@ if __name__ == "__main__":
 
 
   utils.logging("[INFO] Start BiSpark.", args)
+  start_time = time.time()
   result_path = align(sc, bc_args.value)
+  end_time = time.time()
+  utils.logging("[INFO] BiSpark took : " + str(end_time - start_time), args)
+
   
 
   # remove temp files
