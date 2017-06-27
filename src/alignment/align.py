@@ -125,6 +125,7 @@ if __name__ == "__main__":
   bc_args = sc.broadcast( args )
 
 
+  utils.logging("[INFO] Start BiSpark.", args)
   result_path = align(sc, bc_args.value)
   
 
