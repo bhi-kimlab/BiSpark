@@ -73,7 +73,6 @@ def gen_bowtie_query(ref_prefix, input_file, output_file):
   return  ["bowtie2",
            "--local",
            "--quiet",
-           "-p", "2",
            "-D", "50",
            "--norc",
            "--sam-nohead",
@@ -82,6 +81,7 @@ def gen_bowtie_query(ref_prefix, input_file, output_file):
            "-f",
            "-U", input_file,
            "-S", output_file]
+           # "-p", "2",
 
 
 
