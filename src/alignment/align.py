@@ -28,7 +28,7 @@ def align(sc, args):
               .map( lambda x: g_utils.line2kv( x))
 
   if args.testmode == "balancing":
-    readRDD = readRDD.partitionBy( args.nodes ) \
+    readRDD = readRDD.partitionBy( args.nodes )
                       
   readRDD = readRDD.cache()
 
