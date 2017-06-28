@@ -10,6 +10,7 @@
 22hrs, 16mins, 33sec 
 
 2 * 10^8
+33hrs, 25mins, 52sec
 
 
 20대 CloudAligner (master1)
@@ -56,8 +57,12 @@ BiSpark took : 567.989695072
 BiSpark took : 2529.16784406
 
 1 * 10^8 
+132m42.739s
+BiSpark took : 6479.50079799
 
 2 * 10^8
+real    258m49.584s
+BiSpark took : 12656.9945021
 
 
 40대 SparkMethyl balancing ()
@@ -79,10 +84,16 @@ BiSpark took : 2529.16784406
 20대 SparkMethyl plain (master1)
 
 1 * 10^7
+12m50.025s
+BiSpark took : 617.381356001
 
 5 * 10^7
+55m17.973s
+BiSpark took : 2576.87444901
 
 1 * 10^8 
+107m32.683s
+BiSpark took : 5006.966784
 
 2 * 10^8
 
