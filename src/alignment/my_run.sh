@@ -1,9 +1,9 @@
 
 basepath=$(dirname $0)
-nodes=20
 
 size=$1
 testmode=$2
+nodes=$3
 
 #size=10_000_000
 #size=50_000_000
@@ -25,7 +25,7 @@ ref="hdfs:///user/hadoop/ref/chr1"
 
 hdfs dfs -rm -r -f $output
 
-echo $size $testmode >> time.txt
+echo $nodes $size $testmode >> time.txt
 
 { time spark-submit \
   --executor-memory 5G \
