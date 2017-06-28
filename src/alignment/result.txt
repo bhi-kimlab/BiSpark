@@ -38,10 +38,16 @@
 
 
 
-10대 SparkMethyl balancing ()
+10대 SparkMethyl balancing (master2)
 
 1 * 10^7
+21m15.047s
+BiSpark took : 1119.83928299
+
 5 * 10^7
+126m48.577s
+BiSpark took : 6849.87012291
+
 1 * 10^8 
 2 * 10^8
 
@@ -61,7 +67,7 @@ BiSpark took : 2529.16784406
 BiSpark took : 6479.50079799
 
 2 * 10^8
-real    258m49.584s
+258m49.584s
 BiSpark took : 12656.9945021
 
 
@@ -96,7 +102,8 @@ BiSpark took : 2576.87444901
 BiSpark took : 5006.966784
 
 2 * 10^8
-
+210m10.761s
+BiSpark took : 9755.69711685
 
 40대 SparkMethyl balancing ()
 
