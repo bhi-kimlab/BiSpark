@@ -18,7 +18,7 @@ input=hdfs:///user/hadoop/fa_data/$size.fa
 #input=hdfs:///user/hadoop/fa_data/$size.myf
 output=hdfs:///user/hadoop/result/test_$size
 local=alignment_$size.txt
-name=$size\_balacning_test
+name=$size\_$testmode\_test
 
 # input="hdfs:////test/data/1000.myf"
 ref="hdfs:///user/hadoop/ref/chr1"
