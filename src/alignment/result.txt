@@ -85,7 +85,12 @@ BiSpark took : 359.108794928
 BiSpark took : 1312.41620994
 
 1 * 10^8 
+65m31.035s
+BiSpark took : 2501.76749301
+
 2 * 10^8
+129m24.235s
+BiSpark took : 4858.62944102
 
 
 10대 SparkMethyl plain (master1)
@@ -124,9 +129,18 @@ BiSpark took : 5006.966784
 210m10.761s
 BiSpark took : 9755.69711685
 
-40대 SparkMethyl balancing (master1)
+40대 SparkMethyl plain (master1)
 
 1 * 10^7
+12m22.274s
+BiSpark took : 588.032161951
+
 5 * 10^7
+38m3.198s
+BiSpark took : 1562.29359102
+
 1 * 10^8 
+67m24.892s
+BiSpark took : 2623.24519897
+
 2 * 10^8
