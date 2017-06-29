@@ -53,7 +53,7 @@ BiSpark took : 6849.87012291
 BiSpark took : 13697.975137
 
 2 * 10^8
-
+#error
 
 20대 SparkMethyl balancing (master1)
 
@@ -74,10 +74,16 @@ BiSpark took : 6479.50079799
 BiSpark took : 12656.9945021
 
 
-40대 SparkMethyl balancing ()
+40대 SparkMethyl balancing (master1)
 
 1 * 10^7
+8m35.155s
+BiSpark took : 359.108794928
+
 5 * 10^7
+33m34.051s
+BiSpark took : 1312.41620994
+
 1 * 10^8 
 2 * 10^8
 
@@ -97,8 +103,7 @@ BiSpark took : 5192.02197289
 BiSpark took : 10114.412379
 
 2 * 10^8
-164m46.574s
-BiSpark took : 7294.66532803
+#error
 
 
 20대 SparkMethyl plain (master1)
@@ -119,7 +124,7 @@ BiSpark took : 5006.966784
 210m10.761s
 BiSpark took : 9755.69711685
 
-40대 SparkMethyl balancing ()
+40대 SparkMethyl balancing (master1)
 
 1 * 10^7
 5 * 10^7
