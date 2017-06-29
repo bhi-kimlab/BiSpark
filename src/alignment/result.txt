@@ -144,3 +144,5 @@ BiSpark took : 1562.29359102
 BiSpark took : 2623.24519897
 
 2 * 10^8
+126m11.525s
+BiSpark took : 4708.27743506
