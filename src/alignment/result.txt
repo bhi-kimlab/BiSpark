@@ -29,11 +29,16 @@
 
 
 
-40대 CloudAligner ()
+40대 CloudAligner (master1)
 
 1 * 10^7
+2hrs, 1mins, 37sec 
+
 5 * 10^7
+3hrs, 33mins, 42sec 
+
 1 * 10^8 
+
 2 * 10^8
 
 
