@@ -153,3 +153,43 @@ BiSpark took : 2623.24519897
 2 * 10^8
 126m11.525s
 BiSpark took : 4708.27743506
+
+
+9대 Bison (cherry01)
+
+1 * 10^7
+skipped
+
+5 * 10^7
+skipped
+
+1 * 10^8
+255m36.282s
+
+2 * 10^8
+skipped
+
+17대 Bison (cherry01)
+
+1 * 10^7
+
+5 * 10^7
+
+1 * 10^8 
+now running 
+
+2 * 10^8
+
+37대 Bison (cherry01)
+
+1 * 10^7
+skipped
+
+5 * 10^7
+skipped
+
+1 * 10^8 
+
+2 * 10^8
+skipped
+
