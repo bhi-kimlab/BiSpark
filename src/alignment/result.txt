@@ -172,14 +172,16 @@ skipped
 17대 Bison (cherry01)
 
 1 * 10^7
-now running 
+12m56.042s
 
 5 * 10^7
+64m55.941s
 
 1 * 10^8 
 129m1.073s
 
 2 * 10^8
+258m28.829s
 
 37대 Bison (cherry01)
 
