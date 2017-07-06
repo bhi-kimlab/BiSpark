@@ -183,6 +183,19 @@ skipped
 2 * 10^8
 258m28.829s
 
+
+21대 Bison (master1)
+
+1 * 10^7
+
+5 * 10^7
+
+1 * 10^8 
+104m29.801s
+
+2 * 10^8
+
+
 37대 Bison (cherry01)
 
 1 * 10^7
@@ -197,3 +210,17 @@ skipped
 2 * 10^8
 skipped
 
+
+41대 Bison (master1)
+
+1 * 10^7
+skipped 
+
+5 * 10^7
+skipped
+
+1 * 10^8 
+54m35.989s
+
+2 * 10^8
+skipped
