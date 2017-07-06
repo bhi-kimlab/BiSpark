@@ -196,6 +196,7 @@ skipped
 104m29.801s
 
 2 * 10^8
+208m29.934s
 
 
 37대 Bison (cherry01)
