@@ -1,4 +1,4 @@
-# SparkMethyl
+# BiSpark
 
 ## Prerequisite
 - Spark should be installed.
