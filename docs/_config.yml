@@ -1,1 +1,4 @@
 theme: jekyll-theme-cayman
+title: BiSpark
+description: a Spark-based highly scalable aligner for bisulfite sequencing data
+show_downloads: true
