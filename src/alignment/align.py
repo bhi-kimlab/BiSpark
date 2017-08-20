@@ -48,13 +48,15 @@ def align(sc, args):
                                     lambda lst, v: lst + [v],\
                                     lambda l1, l2: l1 + l2 )
   filteredRDD = combRDD.mapValues( lambda x: a_utils.select_and_find_uniq_alignment( x))\
-                        .filter( lambda (k, v): not (v is None))
+                        .filter( lambda (k, v): v is not None )
+                        # .filter( lambda (k, v): not (v is None))
 
   if args.testmode == "balancing":
     filteredRDD = filteredRDD.partitionBy( args.nodes )
                   
 
-  methylRDD = filteredRDD.map( lambda x: a_utils.calc_methyl(x, bc_refdict.value) )
+  methylRDD = filteredRDD.map( lambda x: a_utils.calc_methyl(x, bc_refdict.value, args.num_mm) )\
+                          .filter( lambda x: x is not None )
 
   result_path = os.path.join( args.output, "alignment" )
   methylRDD.map( lambda x: a_utils.res_to_string(x) ).saveAsTextFile( result_path )
@@ -74,6 +76,7 @@ if __name__ == "__main__":
   parser.add_argument("--ref", type=str, default="", help="input reference path")
   parser.add_argument("--log", type=str, default="", help="log path")
   parser.add_argument("--nodes", type=int, default=1, help="number of nodes")
+  parser.add_argument("--num_mm", type=int, default=4, help="number of mismatches")
   parser.add_argument("--local_save", type=str, default="", help="local path to save result")
   parser.add_argument("--testmode", type=str, default="plain", help="testmode: <balancing> | <plain>")
   parser.add_argument("--appname", type=str, default="DefaultApp", help="application name of spark")

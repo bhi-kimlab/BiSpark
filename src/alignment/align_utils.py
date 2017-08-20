@@ -24,7 +24,9 @@ def mapping(i, pref, methods, ptn, args):
     os.makedirs( args.tempbase )
 
   ref_path = os.path.join( args.tempbase, "ref" )
-  utils.read_hdfs( os.path.join(args.ref, "index"), ref_path )
+
+  if not os.path.exists( os.path.join(args.ref, "index") ):
+    utils.read_hdfs( os.path.join(args.ref, "index"), ref_path )
 
   # check file existence
   iPath = os.path.join( args.tempbase, "iv_%s_%d.fa" % (pref, i) )
@@ -277,7 +279,7 @@ def get_uniq(lst, i):
 # calculate methylation level
 ###
 
-def calc_methyl(pair, ref_dict):
+def calc_methyl(pair, ref_dict, num_mm):
   # add ref seq
   (read_id, (info, origin_seq)) = pair
 
@@ -366,6 +368,9 @@ def calc_methyl(pair, ref_dict):
     if r_aln[i] != g_aln[i] and r_aln[i] != "N" and g_aln[i] != "N" and not( r_aln[i] == "T" and g_aln[i] == "C"):
       mismatches += 1
 
+  if mismatches > num_mm:
+    return None
+
   # get methylation sequence
   methy = ""
   tmp = "-"
@@ -394,6 +399,14 @@ def calc_methyl(pair, ref_dict):
     else:
       tmp = "-"
     methy += tmp
+
+  # make cigar
+  # if method == "C_C2T" or method == "C_G2A":
+  if method == "C_C2T":
+    cigar = list(reversed(cigar))
+    cigar_str = ""
+    for sym, n in cigar:
+      cigar_str += "%d%s" % (n, sym)
 
 
   return (read_id, (mismatches, method, chrm, target_strand, start_pos, cigar_str, target_seq, methy, "%s_%s_%s" % (prev2_seq, g_aln, next2_seq), uniq))

@@ -105,6 +105,7 @@ def merge_hdfs(d, f):
 ###
 def gen_file():
   s = "/tmp/spm-%s" % (''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(10)))
+  # s = "/home/dane2522/project/SparkMethyl/SparkMethyl/tmp/spm-%s" % (''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(10)))
   s += str(int(time.time()))
   return s
 
