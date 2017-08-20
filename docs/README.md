@@ -36,6 +36,7 @@ BiSpark is implemented on [Apache Spark](https://spark.apache.org/) framework an
   3. --log: Local log file path.
   4. --ref: Index dicrectory in HDFS. Should be same path as denoted as '--output'.
   5. --nodes: The number of executors. = (# of nodes of cluster) * (# of spark executors in each node)
+  6. --num_mm: The number of maximum mismatches (default: 4)
   6. --local_save: Local output sam file path.
   7. --testmode: Switching testmode for experiment. Should be one of 'balancing' or 'plain'.
   8. --appname: Application name that are used for Spark's application name.
