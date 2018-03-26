@@ -4,7 +4,7 @@
 
 BiSpark is a highly parallelized bisulfite-treated read aligner algorithm that utilizes distributed environment to significantly improve aligning performance and scalability. BiSpark is designed based on the Apache Spark distributed framework and shows highly efficient scalability.
 
-![Figure](https://github.com/bhi-kimlab/BiSpark/blob/master/docs/BisPark_workflow.pdf?raw=true)
+![Figure](https://github.com/bhi-kimlab/BiSpark/blob/master/docs/BisPark_workflow_v2.png?raw=true)
 
 
 # Features
