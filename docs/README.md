@@ -42,12 +42,10 @@ BiSpark is implemented on [Apache Spark](https://spark.apache.org/) framework an
   8. --appname: Application name that are used for Spark's application name.
 
 # Test data set in the publication
-\[
-[1.6GB](http://epigenomics.snu.ac.kr/BiSpark/10_000_000.fa)/
+\[[1.6GB](http://epigenomics.snu.ac.kr/BiSpark/10_000_000.fa)/
 [7.9GB](http://epigenomics.snu.ac.kr/BiSpark/50_000_000.fa)/
 [16GB](http://epigenomics.snu.ac.kr/BiSpark/100_000_000.fa)/
-[32GB](http://epigenomics.snu.ac.kr/BiSpark/200_000_000.fa)
-\]
+[32GB](http://epigenomics.snu.ac.kr/BiSpark/200_000_000.fa)\]
 
 # Contact
 If you have any question or problem, please send a email to [dane2522@gmail.com](mailto:dane2522@gmail.com)
