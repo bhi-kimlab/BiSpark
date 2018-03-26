@@ -41,6 +41,8 @@ BiSpark is implemented on [Apache Spark](https://spark.apache.org/) framework an
   7. --testmode: Switching testmode for experiment. Should be one of 'balancing' or 'plain'.
   8. --appname: Application name that are used for Spark's application name.
 
+# Test data set in the publication
+http://xxx
 
 # Contact
 If you have any question or problem, please send a email to [dane2522@gmail.com](mailto:dane2522@gmail.com)
