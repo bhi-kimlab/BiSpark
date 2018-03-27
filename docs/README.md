@@ -65,7 +65,7 @@ Now pre-built BiSpark AMI(AMI#: xxx, Region: Ohio) on the Amazon EC2. Belows are
 [16GB](http://epigenomics.snu.ac.kr/BiSpark/100_000_000.fa)/
 [32GB](http://epigenomics.snu.ac.kr/BiSpark/200_000_000.fa)\]
 
-# Recommended pre-processing quality control
+# Recommended pre-processing for quality control
 
 To improve the mappability and alignment accuracy, snitizing the poor reads before the main BiSpark phase is highly recommended. 
   *. Run XXX [fastq].
