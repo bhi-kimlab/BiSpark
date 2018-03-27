@@ -46,16 +46,16 @@ BiSpark is implemented on [Apache Spark](https://spark.apache.org/) framework an
 
 Now pre-built BiSpark AMI(AMI#: xxx, Region: Ohio) on the Amazon EC2. Belows are step by step procedure.
 
-- Creating cluster instance based on BiSpark AMI
+- Creating cluster instance based on BiSpark AMI.
   1.
 
-- Initializing the Spark & HDFS
+- Initializing the Spark & HDFS.
   1.
 
-- Checking if the cluster is correctly deployed
+- Checking if the cluster is correctly deployed.
   1.
 
-- Test run with test data set
+- Test run with test data set.
   1.
 
 # Test data set in the publication
