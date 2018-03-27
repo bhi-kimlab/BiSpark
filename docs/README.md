@@ -46,6 +46,9 @@ BiSpark is implemented on [Apache Spark](https://spark.apache.org/) framework an
 
 Now pre-built BiSpark AMI(AMI#: xxx, Region: Ohio) on the Amazon EC2. Belows are step by step procedure.
 
+- Building Index (reference: ./src/build_index/run.sh)
+  1. --input: Input reference FASTA file located in HDFS.
+  
 - Creating cluster instance based on BiSpark AMI.
   1.
 
