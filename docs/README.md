@@ -50,16 +50,16 @@ Now pre-built BiSpark AMI(AMI#: xxx, Region: Ohio) on the Amazon EC2. Belows are
   1. --input: Input reference FASTA file located in HDFS.
   
 - Creating cluster instance based on BiSpark AMI.
-  1.
+  1. xxx.
 
 - Initializing the Spark & HDFS.
-  1.
+  1. xxx.
 
 - Checking if the cluster is correctly deployed.
-  1.
+  1. xxx.
 
 - Test run with test data set.
-  1.
+  1. xxx.
 
 # Test data set in the publication
 
