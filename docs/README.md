@@ -6,6 +6,7 @@ BiSpark is a highly parallelized bisulfite-treated read aligner algorithm that u
 
 ![Figure](https://github.com/bhi-kimlab/BiSpark/blob/master/docs/BisPark_workflow_v2.png?raw=true)
 
+Analysis workflow within BiSpark consists of 4 processing phases: (1) Distributing the reads into key-value pairs, (2) Transforming reads into ‘three-letter’ reads and mapping to transformed reference genome, (3) Aggregating mapping results and filtering ambiguous reads, and (4) Profiling the methylation information for each read. The figure depicts the case when library of input data is a non-directional.
 
 # Features
 
