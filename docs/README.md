@@ -68,7 +68,8 @@ Now pre-built BiSpark AMI(AMI#: xxx, Region: Ohio) on the Amazon EC2. Belows are
 # Recommended pre-processing for quality control
 
 To improve the mappability and alignment accuracy, snitizing the poor reads before the main BiSpark phase is highly recommended. 
-  *. Run XXX [fastq].
+  
+  * Run XXX [fastq].
   
 # Contact
 
