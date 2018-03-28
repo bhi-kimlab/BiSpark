@@ -137,8 +137,8 @@ if __name__ == "__main__":
 
   
 
-  # # remove temp files
-  # utils.rm_rf(args.tempbase)
+  # remove temp files
+  utils.rm_rf(args.tempbase)
 
   # for DEBUG
   if args.local_save != "":
