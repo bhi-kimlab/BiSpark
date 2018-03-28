@@ -29,18 +29,19 @@ def mapping(i, pref, methods, ptn, args):
     utils.read_hdfs( os.path.join(args.ref, "index"), ref_path )
 
   # check file existence
-  iPath = os.path.join( args.tempbase, "iv_%s_%d.fa" % (pref, i) )
+  iPath = os.path.join( args.tempbase, "iv_%s_%d" % (pref, i) )
 
-  save_pair( iPath, ptn )
+  iPath, ext = save_pair( iPath, ptn )
 
   # run bowtie2
   for method in methods:
     oPath = os.path.join( args.tempbase, "%s_%d.sam" % (method, i))
 
     query = gen_bowtie_query(\
-      os.path.join( ref_path, method),\
-      iPath,\
-      oPath)
+      os.path.join(ref_path, method),
+      iPath,
+      oPath,
+      ext)
 
     print(query)
     proc = subprocess.Popen(query).communicate()
@@ -56,14 +57,29 @@ def mapping(i, pref, methods, ptn, args):
 
 
 ###
-# get filename, <read_id, seq> data, return value
-# and write data to file in FASTA format
-# output: return value
+# get filename, <read_id, seq, info> data, return value
+# and write data to file in FASTA / FASTQ format
+# output: new filename
 ###
 def save_pair(f, it):
-  with open(f, 'w') as fp:
-    for read_id, seq in it:
-      fp.write(">%s\n%s\n" % (read_id, seq))
+  read_id, (seq, info) = next(it)
+
+  if info == '':
+    ext = "fasta"
+    build_output = lambda rid, seq, info: ">%s\n%s\n" % (rid, seq)
+  else:
+    ext = "fastq"
+    build_output = lambda rid, seq, info: "@%s\n%s\n+%s\n" % (rid, seq, info.replace("\t", "\n"))
+
+  fname = f + "." + ext
+
+  with open(fname, 'w') as fw:
+    fw.write(build_output(read_id, seq, info))
+
+    for read_id, (seq, info) in it:
+      fw.write(build_output(read_id, seq, info))
+
+  return fname, ext
 
 
 
@@ -72,7 +88,9 @@ def save_pair(f, it):
 ###
 # bowtie2 command
 ###
-def gen_bowtie_query(ref_prefix, input_file, output_file):
+def gen_bowtie_query(ref_prefix, input_file, output_file, ext):
+  ext_flag = "-q" if ext == "fastq" else "-f"
+
   return  ["bowtie2",
            "--local",
            "--quiet",
@@ -81,7 +99,7 @@ def gen_bowtie_query(ref_prefix, input_file, output_file):
            "--sam-nohead",
            "-k", "2",
            "-x", ref_prefix,
-           "-f",
+           ext_flag,
            "-U", input_file,
            "-S", output_file]
            # "-p", "2",
@@ -125,8 +143,10 @@ def select_and_find_uniq_alignment(lst):
   raw = None
 
   for elem in lst:
-    if isinstance(elem, str): # raw
-      raw = elem
+    # if isinstance(elem, str): # raw
+    #   raw = elem
+    if len(elem) == 2: # raw
+      raw = elem[0]
     else:
       group[ methods[ elem[0] ] ].append( elem)
 

@@ -35,10 +35,10 @@ def align(sc, args):
 
 
   ## transform and get result of bowtie
-  c2tTransRDD = readRDD.mapValues( lambda x: x.translate( g_utils.make_trans_with("W", "C", "T")) )
+  c2tTransRDD = readRDD.mapValues( lambda x: (x[0].translate( g_utils.make_trans_with("W", "C", "T")), x[1]) )
   c2tMapRDD   = c2tTransRDD.mapPartitionsWithIndex( lambda i, ptn: a_utils.mapping(i, "C2T", ["W_C2T", "C_C2T"], ptn, args) )
   
-  g2aTransRDD = readRDD.mapValues( lambda x: x.translate( g_utils.make_trans_with("W", "G", "A")) )
+  g2aTransRDD = readRDD.mapValues( lambda x: (x[0].translate( g_utils.make_trans_with("W", "G", "A")), x[1]) )
   g2aMapRDD   = g2aTransRDD.mapPartitionsWithIndex( lambda i, ptn: a_utils.mapping(i, "G2A", ["W_G2A", "C_G2A"], ptn, args) )
 
 
@@ -117,10 +117,10 @@ if __name__ == "__main__":
   input_ext = os.path.splitext(args.input)[1]
 
   ## node--
-  args.nodes = args.nodes - 1
+  args.nodes = max(args.nodes - 1, 1)
 
   if input_ext != ".myf":
-    utils.logging("[INFO] Transform input file to myf.", args)
+    utils.logging("[INFO] Transform input file to myf. (<- %s)" % input_ext, args)
     myf_input = os.path.join(args.output, "input.myf")
     utils.convert_to_myf(args.input, myf_input)
     args.input = myf_input
@@ -137,7 +137,7 @@ if __name__ == "__main__":
 
   
 
-  # remove temp files
+  # # remove temp files
   # utils.rm_rf(args.tempbase)
 
   # for DEBUG

@@ -41,6 +41,61 @@ def read_fasta(fasta_file):
   input.close()
 
 
+###
+# read FASTQ format file (which is the raw sequence file)
+# and parse it to < uniq_id, sequence string, (tab-sperated 3rd and 4th lines) >
+# (if it's reference file, uniq is "chromosome number",
+# if it's sequencing file, uniq is read id.
+###
+def read_fastq(fastq_file):
+  input = open(fastq_file, 'r')
+
+  sanitize = re.compile(r'[^ACTGN]')
+  sanitize_seq_id = re.compile(r'[^A-Za-z0-9]')
+
+  chrom_info = ''
+  chrom_seq = ''
+  chrom_id = None
+  line_idx = 0 # point next
+
+  for line in input:
+    if line[0] == '@': # 1st line
+      if chrom_id is not None:
+        yield chrom_id, chrom_seq, chrom_info
+      
+      # chrom_id = sanitize_seq_id.sub('_', line.split()[0][1:]).encode('ascii','replace')
+      chrom_id = line.split()[0][1:].encode('ascii','replace')
+      chrom_seq = ''
+      chrom_info = ''
+      line_idx = 1
+    elif line_idx == 1: # 2nd line
+      chrom_seq += sanitize.sub('N', line.strip().upper()).encode('ascii','replace')
+      line_idx = 2
+    elif line[0] == '+': # 3rd line
+      chrom_info = line.rstrip().encode('ascii','replace')
+      line_idx = 3
+    elif line_idx == 3: # 4th line
+      chrom_info = chrom_info + "\t" + line.rstrip().encode('ascii','replace')
+
+  yield chrom_id, chrom_seq, chrom_info
+
+  input.close()
+
+
+###
+# Fasta or Fastq?
+###
+def get_extension(filename):
+  ext = filename.split(".")[-1]
+
+  if ext in ["fa", "fasta"]:
+    return "fasta"
+  elif ext in ["fq", "fastq"]:
+    return "fastq"
+  else:
+    return ext
+
+
 ### 
 # mkdir -p
 ###
@@ -105,7 +160,6 @@ def merge_hdfs(d, f):
 ###
 def gen_file():
   s = "/tmp/spm-%s" % (''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(10)))
-  # s = "/home/dane2522/project/SparkMethyl/SparkMethyl/tmp/spm-%s" % (''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(10)))
   s += str(int(time.time()))
   return s
 
@@ -120,8 +174,15 @@ def convert_to_myf(inf, outf, remove_tmp=True):
   read_hdfs(inf, tmprfile)
 
   with open( tmpwfile, 'w') as wt:
-    for read_id, seq in read_fasta( tmprfile): 
-      wt.write("%s,%s\n" % (read_id, seq))
+    ext = get_extension(inf)
+    if ext == "fasta":
+      for read_id, seq in read_fasta( tmprfile): 
+        wt.write("%s,%s,\n" % (read_id, seq))
+    elif ext == "fastq":
+      for read_id, seq, info in read_fastq( tmprfile): 
+        wt.write("%s,%s,%s\n" % (read_id, seq, info))
+    else:
+      raise ValueError("Inf format is not supported.")
 
   write_hdfs(tmpwfile, outf)
 
@@ -136,8 +197,8 @@ def convert_to_myf(inf, outf, remove_tmp=True):
 # logging
 ###
 def logging(s, args):
-  logdir = os.path.dirname( args.log )
-  mkdir( logdir )
+  logdir = os.path.dirname(args.log)
+  mkdir(logdir)
 
   s = "%s: %s" % (datetime.now(), s)
   with open(args.log, 'a') as fw:
@@ -147,10 +208,11 @@ def logging(s, args):
 
 ###
 # line to key-value pair
+# (key, seq, info=None)
 ###
 def line2kv(s):
-  tmp = s.encode('ascii','replace').split(",")
-  return ( tmp[0], tmp[1] )
+  tmp = s.strip().encode('ascii','replace').split(",", 2)
+  return ( tmp[0], (tmp[1], tmp[2]) )
 
 
 
