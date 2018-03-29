@@ -44,7 +44,7 @@ BiSpark is implemented on [Apache Spark](https://spark.apache.org/) framework an
 
 # BiSpark on Amazon cloud
 
-Now pre-built BiSpark AMI(AMI#: xxx, Region: Ohio) on the Amazon EC2. Belows are step by step procedure.
+Now pre-built BiSpark AMI(AMI#: xxx, Region: Ohio) is available on the Amazon EC2. Belows are step-by-step procedure of how to deploy the BiSpark by using the AMI.
   
 - Creating cluster instance based on BiSpark AMI.
   1.  Set the region of EC2 as US East (Ohio).
