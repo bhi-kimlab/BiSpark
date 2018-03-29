@@ -65,11 +65,12 @@ Now pre-built BiSpark AMI(AMI#: xxx, Region: Ohio) on the Amazon EC2. Belows are
 [16GB](http://epigenomics.snu.ac.kr/BiSpark/100_000_000.fa)/
 [32GB](http://epigenomics.snu.ac.kr/BiSpark/200_000_000.fa)\]
 
-# Recommended pre-processing for quality control
+# Recommended (optional) pre-processing for quality control
 
-To improve the mappability and alignment accuracy, snitizing the poor reads before the main BiSpark phase is highly recommended. 
+To improve the mappability and alignment accuracy, snitizing the poor reads before the main BiSpark phase is highly recommended. Following is recommended procedure for read quality control.
   
-  * Run XXX [fastq].
+  * Run Cutadapt(https://github.com/marcelm/cutadapt/) to remove adaptor sequence from the reads.
+  * Run FastQC(https://www.bioinformatics.babraham.ac.uk/projects/download.html#fastqc) to visualize the visualize the various aspect of your data including read quality.
   
 # Contact
 
