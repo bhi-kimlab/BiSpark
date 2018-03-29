@@ -70,6 +70,7 @@ Now pre-built BiSpark AMI(AMI#: xxx, Region: Ohio) on the Amazon EC2. Belows are
 To improve the mappability and alignment accuracy, snitizing the poor reads before the main BiSpark phase is highly recommended. Following is recommended procedure for read quality control.
   
   * Run Cutadapt(https://github.com/marcelm/cutadapt/) to remove adaptor sequence from the reads.
+  
   * Run FastQC(https://www.bioinformatics.babraham.ac.uk/projects/download.html#fastqc) to visualize the visualize the various aspect of your data including read quality.
   
 # Contact
