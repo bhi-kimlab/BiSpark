@@ -56,8 +56,8 @@ Now pre-built BiSpark AMI(AMI#: xxx, Region: Ohio) on the Amazon EC2. Belows are
   7.	Set the number of instances in the cluster and press ‘Next: Storage’.
   8.	Set the size of /dev/sda1 with more than 20GB and press ‘Next:Add Tags’.
   9.	Skip configuring Add Tags and press ‘Next:Configure Security Group’.
- 10.	Add Rule with TCP 7077, 8020, 8031, 8032, 8042, 8080, 8088, 50010,50070 sources from anywhere. (for simplicity, open all ports from 4000-55000).
- 11.	Review and launch the cluster.
+  10.	Add Rule with TCP 7077, 8020, 8031, 8032, 8042, 8080, 8088, 50010,50070 sources from anywhere (for simplicity, open all ports from 4000-55000).
+  11. Review and launch the cluster.
  
 - Checking if the cluster is correctly deployed.
   1.  In the left menu, select INSTANCES – instances.
