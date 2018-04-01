@@ -44,13 +44,13 @@ BiSpark is implemented on [Apache Spark](https://spark.apache.org/) framework an
 
 # BiSpark on Amazon cloud
 
-Now pre-built BiSpark AMI(AMI#: xxx, Region: Ohio) is available on the Amazon EC2. Belows are step-by-step procedure of how to deploy the BiSpark by using the AMI.
+Now pre-built BiSpark AMI(AMI#:ami-dcab9ab9, Region: Ohio) is available on the Amazon EC2. Belows are step-by-step procedure of how to deploy the BiSpark by using the AMI.
   
 - Creating cluster instance based on BiSpark AMI.
   1.  Set the region of EC2 as US East (Ohio).
   2.	In the left menu, select ‘IMAGES – AMIs’.
   3.	Change search filter from ‘Owned by me’ to ‘Public Images’.
-  4.	Enter the image name ‘ami-XXXXX’.
+  4.	Enter the image name ‘ami-dcab9ab9’.
   5.	After selecting the AMI with the name ‘BiSpark’, press Launch button.
   6.	Select the instance type that has more than 8GB memory and press ‘Next: Configure Instance Details’.
   7.	Set the number of instances in the cluster and press ‘Next: Storage’.
