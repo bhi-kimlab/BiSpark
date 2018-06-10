@@ -175,17 +175,48 @@ def find_uniq_alignment(group):
     if muniq != None:
       sorted_list.append( muniq)
 
+  utils.my_logging("[Sorted_list]\n")
+  utils.my_logging(sorted_list)
 
+  if len(sorted_list) == 0 :
+    return None
+
+  s=0
+  while s < len(sorted_list) :
+    if len(sorted_list[s]) == 0 :
+      del sorted_list[s]
+    else :
+      s = s + 1
+  
   sorted_list = sorted(sorted_list, key=lambda x: x[0][1]) # by mismatch
   length = len(sorted_list)
 
-
   if length >= 1:
+    if len(sorted_list[0]) == 0 :
+      return None
+
     curr = sorted_list[0]
     next = sorted_list[1] if length >= 2 else ([None, None], False)
 
-    if curr[0][1] != next[0][1] and curr[1]:
+    utils.my_logging("\nCurr\n")
+    utils.my_logging(curr)
+    if curr[0][1] != next[0][1] and curr[1] :
       return curr[0]
+    else :
+	t = 1
+	is_unique = 0
+	while t < len(sorted_list) :
+		temp = sorted_list[t]
+		if (curr[0][1] == temp[0][1]) and (curr[0][2] != temp[0][2]) and (curr[0][3] != temp[0][3]) :
+			is_unique = 0
+			break
+		elif (curr[0][1] == temp[0][1]) and (curr[0][2] == temp[0][2]) and (curr[0][3] == temp[0][3]) :
+			is_unique = 1
+			
+		t += 1
+
+	if is_unique == 1 :
+		return curr[0]
   
   return None    
       
