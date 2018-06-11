@@ -85,17 +85,14 @@ Now pre-built BiSpark AMI(AMI#:ami-dcab9ab9, Region: Ohio) is available on the A
 
 # Revision
 
-Simulated datasets used during the revision process are list below.(note: assume chr1.fa exist in genomeref directory)
+Simulated datasets used during the revision process are list below. (note: assume chr1.fa exist in genomeref directory)
 
 - sherman_cr_0.fastq\[[download](http://epigenomics.snu.ac.kr/BiSpark/sherman_cr_0.fastq)\] 
   * ./Sherman -l 95 -n 100000 -e 0 --genome_folder ./genomeref/ -cr 0
-  
 - sherman_cr_100.fastq\[[download](http://epigenomics.snu.ac.kr/BiSpark/sherman_cr_100.fastq)\]
   * ./Sherman -l 95 -n 100000 -e 0 --genome_folder ./genomeref/ -cr 100
-  
 - sherman_cr_100_e_3.5.fastq\[[download](http://epigenomics.snu.ac.kr/BiSpark/sherman_cr_100_e_3.5.fastq)\]
   * ./Sherman -l 95 -n 100000 -e 3.5 --genome_folder ./genomeref/ -cr 100)
-  
 - art_simulation_cr_100.fastq\[[download](http://epigenomics.snu.ac.kr/BiSpark/art_simulation_cr_100.fastq)\]
   * ./art_illumina -ss HS20 -sam -i ~/genomeref/chr1.fa -l 95 -ef -c 200000 -o art_test
   * head -400000 art_test.fq > art_simulation.fastq
