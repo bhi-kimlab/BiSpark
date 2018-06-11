@@ -84,7 +84,7 @@ Now pre-built BiSpark AMI(AMI#:ami-dcab9ab9, Region: Ohio) is available on the A
 [32GB](http://epigenomics.snu.ac.kr/BiSpark/200_000_000.fa)\]
 
 # Revision
-- Simulated data set with commands
+- Simulated data set with commands (note: there exist chr1.fa in genomeref directory)
   1. sherman_cr_0.fastq\[[download](http://epigenomics.snu.ac.kr/BiSpark/sherman_cr_0.fastq)\] (./Sherman -l 95 -n 100000 -e 0 --genome_folder ./genomeref/ -cr 0)
   2. sherman_cr_100.fastq\[[download](http://epigenomics.snu.ac.kr/BiSpark/sherman_cr_100.fastq)\] (./Sherman -l 95 -n 100000 -e 0 --genome_folder ./genomeref/ -cr 100)
   3. sherman_cr_100_e_3.5.fastq\[[download](http://epigenomics.snu.ac.kr/BiSpark/sherman_cr_100_e_3.5.fastq)\] (./Sherman -l 95 -n 100000 -e 3.5 --genome_folder ./genomeref/ -cr 100)
