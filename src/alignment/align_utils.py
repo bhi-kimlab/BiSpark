@@ -172,20 +172,36 @@ def find_uniq_alignment(group):
   sorted_list = []
   for _, i in methods.iteritems():
     muniq = get_and_uniq( group[i], 1 ) # (value, is_uniq)
-    if muniq != None:
-      sorted_list.append( muniq)
-
-
+    if muniq != None and len(muniq) > 0:
+     sorted_list.append( muniq)
+  
   sorted_list = sorted(sorted_list, key=lambda x: x[0][1]) # by mismatch
   length = len(sorted_list)
 
-
   if length >= 1:
+    #if len(sorted_list[0]) == 0 :
+    #  return None
+
     curr = sorted_list[0]
     next = sorted_list[1] if length >= 2 else ([None, None], False)
 
-    if curr[0][1] != next[0][1] and curr[1]:
+    if curr[0][1] != next[0][1] and curr[1] :
       return curr[0]
+    else :
+	t = 1
+	is_unique = 0
+	while t < length :
+		temp = sorted_list[t]
+		if (curr[0][1] == temp[0][1]) and (curr[0][2] != temp[0][2]) and (curr[0][3] != temp[0][3]) :
+			is_unique = 0
+			break
+		elif (curr[0][1] == temp[0][1]) and (curr[0][2] == temp[0][2]) and (curr[0][3] == temp[0][3]) :
+			is_unique = 1
+			
+		t += 1
+
+	if is_unique == 1 :
+		return curr[0]
   
   return None    
       

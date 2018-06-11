@@ -25,8 +25,8 @@ spark-submit \
   --input $input \
   --output $output \
   --ref $ref \
-  --log "./log.txt" \
-  --local_save "./alignment.txt" \
+  --log "./log_1_000_000.txt" \
+  --local_save "./alignmenti_1_000_000.txt" \
   --nodes $nodes \
   --testmode "balancing" \
   --appname "1_000_000"

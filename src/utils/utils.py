@@ -57,25 +57,30 @@ def read_fastq(fastq_file):
   chrom_seq = ''
   chrom_id = None
   line_idx = 0 # point next
+  temp_idx = 0
 
   for line in input:
-    if line[0] == '@': # 1st line
+    if line[0] == '@' and temp_idx == 0: # 1st line
       if chrom_id is not None:
         yield chrom_id, chrom_seq, chrom_info
-      
-      # chrom_id = sanitize_seq_id.sub('_', line.split()[0][1:]).encode('ascii','replace')
-      chrom_id = line.split()[0][1:].encode('ascii','replace')
-      chrom_seq = ''
-      chrom_info = ''
+      temp_first_line = line
       line_idx = 1
+      temp_idx = 1
     elif line_idx == 1: # 2nd line
-      chrom_seq += sanitize.sub('N', line.strip().upper()).encode('ascii','replace')
+      temp_second_line = line
+      #chrom_seq += sanitize.sub('N', line.strip().upper()).encode('ascii','replace')
       line_idx = 2
-    elif line[0] == '+': # 3rd line
+    elif line[0] == '+' and temp_first_line != "" and temp_first_line[0] == '@' and line_idx == 2: # 3rd line
+      chrom_id = temp_first_line.split()[0][1:].encode('ascii','replace')
+      chrom_seq = ''
+      chrom_seq += sanitize.sub('N', temp_second_line.strip().upper()).encode('ascii','replace')
       chrom_info = line.rstrip().encode('ascii','replace')
       line_idx = 3
     elif line_idx == 3: # 4th line
       chrom_info = chrom_info + "\t" + line.rstrip().encode('ascii','replace')
+      temp_idx = 0
+      temp_first_line = ""
+      temp_second_line = ""
 
   yield chrom_id, chrom_seq, chrom_info
 
@@ -204,7 +209,6 @@ def logging(s, args):
   with open(args.log, 'a') as fw:
     fw.write("%s\n" % s)
   print(s)
-
 
 ###
 # line to key-value pair

@@ -1,0 +1,48 @@
+2018-03-27 15:04:26.947048: [INFO] Building index of <hdfs:////test/raw/chr1.fa> is launched.
+2018-03-27 15:04:26.948745: [INFO] Loggin arguments: input : hdfs:////test/raw/chr1.fa.
+2018-03-27 15:04:26.948792: [INFO] Loggin arguments: log : ~/build_log.txt.
+2018-03-27 15:04:26.948827: [INFO] Loggin arguments: output : hdfs:///test/ref/chr1.
+2018-03-27 15:04:26.948864: [INFO] Start downloading reference file.
+2018-03-27 15:04:29.434264: [INFO] Start transforming reference file.
+2018-03-27 15:04:41.092836: [INFO] Start launching bowtie2-build.
+2018-03-27 15:04:41.106243: [INFO] bowtie2-build is called as: bowtie2-build -f /tmp/spm-5L8W1OVY371522163066/W_C2T.fa /tmp/spm-5L8W1OVY371522163066/index/W_C2T
+2018-03-27 15:04:41.110441: [INFO] bowtie2-build is called as: bowtie2-build -f /tmp/spm-5L8W1OVY371522163066/C_C2T.fa /tmp/spm-5L8W1OVY371522163066/index/C_C2T
+2018-03-27 15:04:41.113640: [INFO] bowtie2-build is called as: bowtie2-build -f /tmp/spm-5L8W1OVY371522163066/W_G2A.fa /tmp/spm-5L8W1OVY371522163066/index/W_G2A
+2018-03-27 15:04:41.117550: [INFO] bowtie2-build is called as: bowtie2-build -f /tmp/spm-5L8W1OVY371522163066/C_G2A.fa /tmp/spm-5L8W1OVY371522163066/index/C_G2A
+2018-03-27 15:13:24.835425: [INFO] Start uploading index file.
+2018-03-27 15:38:09.600324: [INFO] Building index of <hdfs:////test/raw/chr1.fa> is launched.
+2018-03-27 15:38:09.602051: [INFO] Loggin arguments: input : hdfs:////test/raw/chr1.fa.
+2018-03-27 15:38:09.602099: [INFO] Loggin arguments: log : ~/build_log.txt.
+2018-03-27 15:38:09.602135: [INFO] Loggin arguments: output : hdfs:///test/ref/chr1.
+2018-03-27 15:38:09.602208: [INFO] Start downloading reference file.
+2018-03-27 15:38:11.938576: [INFO] Start transforming reference file.
+2018-03-27 15:38:23.725517: [INFO] Start launching bowtie2-build.
+2018-03-27 15:38:23.854875: [INFO] bowtie2-build is called as: bowtie2-build -f /tmp/spm-INAB2Y9ME01522165089/W_C2T.fa /tmp/spm-INAB2Y9ME01522165089/index/W_C2T
+2018-03-27 15:38:23.859057: [INFO] bowtie2-build is called as: bowtie2-build -f /tmp/spm-INAB2Y9ME01522165089/C_C2T.fa /tmp/spm-INAB2Y9ME01522165089/index/C_C2T
+2018-03-27 15:38:23.862180: [INFO] bowtie2-build is called as: bowtie2-build -f /tmp/spm-INAB2Y9ME01522165089/W_G2A.fa /tmp/spm-INAB2Y9ME01522165089/index/W_G2A
+2018-03-27 15:38:23.863739: [INFO] bowtie2-build is called as: bowtie2-build -f /tmp/spm-INAB2Y9ME01522165089/C_G2A.fa /tmp/spm-INAB2Y9ME01522165089/index/C_G2A
+2018-03-27 15:47:05.224062: [INFO] Start uploading index file.
+2018-03-30 16:40:10.611268: [INFO] Building index of <hdfs:////test/raw/chr1.fa> is launched.
+2018-03-30 16:40:10.612978: [INFO] Loggin arguments: input : hdfs:////test/raw/chr1.fa.
+2018-03-30 16:40:10.613041: [INFO] Loggin arguments: log : ~/build_log.txt.
+2018-03-30 16:40:10.613076: [INFO] Loggin arguments: output : hdfs:///test/ref/chr1.
+2018-03-30 16:40:10.613112: [INFO] Start downloading reference file.
+2018-03-30 16:40:12.786198: [INFO] Start transforming reference file.
+2018-03-30 16:40:24.061630: [INFO] Start launching bowtie2-build.
+2018-03-30 16:40:24.066741: [INFO] bowtie2-build is called as: bowtie2-build -f /tmp/spm-0HBRSGBJ8B1522428010/W_C2T.fa /tmp/spm-0HBRSGBJ8B1522428010/index/W_C2T
+2018-03-30 16:40:24.069091: [INFO] bowtie2-build is called as: bowtie2-build -f /tmp/spm-0HBRSGBJ8B1522428010/C_C2T.fa /tmp/spm-0HBRSGBJ8B1522428010/index/C_C2T
+2018-03-30 16:40:24.071327: [INFO] bowtie2-build is called as: bowtie2-build -f /tmp/spm-0HBRSGBJ8B1522428010/W_G2A.fa /tmp/spm-0HBRSGBJ8B1522428010/index/W_G2A
+2018-03-30 16:40:24.073792: [INFO] bowtie2-build is called as: bowtie2-build -f /tmp/spm-0HBRSGBJ8B1522428010/C_G2A.fa /tmp/spm-0HBRSGBJ8B1522428010/index/C_G2A
+2018-03-30 16:44:51.573410: [INFO] Start uploading index file.
+2018-06-11 01:32:42.965200: [INFO] Building index of <hdfs:////test/raw/chr1.fa> is launched.
+2018-06-11 01:32:42.966075: [INFO] Loggin arguments: input : hdfs:////test/raw/chr1.fa.
+2018-06-11 01:32:42.966123: [INFO] Loggin arguments: log : ~/build_log.txt.
+2018-06-11 01:32:42.966158: [INFO] Loggin arguments: output : hdfs:///test/ref/chr1.
+2018-06-11 01:32:42.966201: [INFO] Start downloading reference file.
+2018-06-11 01:32:45.220745: [INFO] Start transforming reference file.
+2018-06-11 01:32:56.648434: [INFO] Start launching bowtie2-build.
+2018-06-11 01:32:56.654357: [INFO] bowtie2-build is called as: bowtie2-build -f /tmp/spm-KH4RCLRKOZ1528680762/W_C2T.fa /tmp/spm-KH4RCLRKOZ1528680762/index/W_C2T
+2018-06-11 01:32:56.656745: [INFO] bowtie2-build is called as: bowtie2-build -f /tmp/spm-KH4RCLRKOZ1528680762/C_C2T.fa /tmp/spm-KH4RCLRKOZ1528680762/index/C_C2T
+2018-06-11 01:32:56.659185: [INFO] bowtie2-build is called as: bowtie2-build -f /tmp/spm-KH4RCLRKOZ1528680762/W_G2A.fa /tmp/spm-KH4RCLRKOZ1528680762/index/W_G2A
+2018-06-11 01:32:56.661686: [INFO] bowtie2-build is called as: bowtie2-build -f /tmp/spm-KH4RCLRKOZ1528680762/C_G2A.fa /tmp/spm-KH4RCLRKOZ1528680762/index/C_G2A
+2018-06-11 01:37:58.145208: [INFO] Start uploading index file.

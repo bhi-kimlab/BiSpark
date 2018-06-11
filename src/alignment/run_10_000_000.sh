@@ -1,14 +1,14 @@
 hdfs dfs -mkdir /test
 hdfs dfs -mkdir /test/data
-hdfs dfs -put ~/1_000_000.fa /test/data
+hdfs dfs -put ~/10_000_000.fa /test/data
 
 
 basepath=$(dirname $0)
 nodes=$1
 # input="hdfs:////test/data/100_000.fa"
 # input="hdfs:////test/data/1000.myf"
-input="hdfs:////test/data/1_000_000.fa"
-output="hdfs:///test/result/1_000_000"
+input="hdfs:////test/data/10_000_000.fa"
+output="hdfs:///test/result/10_000_000"
 ref="hdfs:///test/ref/chr1"
 
 hdfs dfs -rm -r -f $output
@@ -25,9 +25,9 @@ spark-submit \
   --input $input \
   --output $output \
   --ref $ref \
-  --log "./log.txt" \
-  --local_save "./alignment.txt" \
+  --log "./log_10_000_000.txt" \
+  --local_save "./alignment_10_000_000.txt" \
   --nodes $nodes \
   --testmode "balancing" \
-  --appname "1_000_000"
+  --appname "10_000_000"
 
