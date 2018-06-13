@@ -50,7 +50,7 @@ Now pre-built BiSpark AMI(AMI#:ami-dcab9ab9, Region: Ohio) is available on the A
   1.  Set the region of EC2 as US East (Ohio).
   2.	In the left menu, select ‘IMAGES – AMIs’.
   3.	Change search filter from ‘Owned by me’ to ‘Public Images’.
-  4.	Enter the image name ‘ami-dcab9ab9’.
+  4.	Enter the image name ‘ami-e3221c86’.
   5.	After selecting the AMI with the name ‘BiSparkImg’, press Launch button.
   6.	Select the instance type that has more than 8GB memory and press ‘Next: Configure Instance Details’.
   7.	Set the number of instances in the cluster and press ‘Next: Storage’.
