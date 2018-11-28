@@ -42,61 +42,6 @@ BiSpark is implemented on [Apache Spark](https://spark.apache.org/) framework an
   7. --testmode: Switching testmode for experiment. Should be one of 'balancing' or 'plain'.
   8. --appname: Application name that are used for Spark's application name.
 
-# BiSpark on Amazon cloud
-
-Now pre-built BiSpark AMI(AMI#:ami-dcab9ab9, Region: Ohio) is available on the Amazon EC2. Belows are step-by-step procedure of how to deploy the BiSpark by using the AMI.
-  
-- Creating cluster instance based on BiSpark AMI.
-  1.  Set the region of EC2 as US East (Ohio).
-  2.	In the left menu, select ‘IMAGES – AMIs’.
-  3.	Change search filter from ‘Owned by me’ to ‘Public Images’.
-  4.	Enter the image name ‘ami-e3221c86’.
-  5.	After selecting the AMI with the name ‘BiSparkImg’, press Launch button.
-  6.	Select the instance type that has more than 8GB memory and press ‘Next: Configure Instance Details’.
-  7.	Set the number of instances in the cluster and press ‘Next: Storage’.
-  8.	Set the size of /dev/sda1 with more than 20GB and press ‘Next:Add Tags’.
-  9.	Skip configuring Add Tags and press ‘Next:Configure Security Group’.
-  10.	Add Rule with TCP 7077, 8020, 8031, 8032, 8042, 8080, 8088, 50010,50070 sources from anywhere (for simplicity, open all ports from 4000-55000).
-  11. Review and launch the cluster.
- 
-- Checking if the cluster is correctly deployed.
-  1.  In the left menu, select INSTANCES – instances.
-  2.  Select one of the instances as the master. Memorize the private IP of the master node. (Not public IP).
-  3.  For each instance, run the script ‘./init.sh’ in the home directory and enter the master node's private IP.
-  4.	Open ‘http://{{ master public ip }}:50070/dfshealth.html#tab-overview’ with your browser and check whether every instance is connected to the hdfs system (i.e., the number of the live node is equal to that of instances).
-  5.	Also check ‘http://{{ master public ip }}:8080/cluster’ if all instances are participating into yarn system.
-
-- Initializing the Spark & HDFS.
-  1.	Log-in to master node.
-  2.	Execute ‘cd ~/BiSpark/src/build_index/’ and run the‘./run.sh’ script.
-
-
-- Test run with test data set.
-  1.	Execute ‘cd ~/BiSpark/src/alignment/’ and run the ‘./run_100_000.sh {{number of nodes in the cluster }}’.
-  2.	The test aligned result will be generated at ‘~/BiSpark/src/alignment/alignment_100_000.txt’, and elapsed time will be printed out on the screen.
-
-
-# Test data set in the publication
-
-\[[1.6GB](http://epigenomics.snu.ac.kr/BiSpark/10_000_000.fa)/
-[7.9GB](http://epigenomics.snu.ac.kr/BiSpark/50_000_000.fa)/
-[16GB](http://epigenomics.snu.ac.kr/BiSpark/100_000_000.fa)/
-[32GB](http://epigenomics.snu.ac.kr/BiSpark/200_000_000.fa)\]
-
-# Revision
-
-Simulated datasets used during the revision process are list below. (note: assume chr1.fa exist in genomeref directory)
-
-- sherman_cr_0.fastq \[[download](http://epigenomics.snu.ac.kr/BiSpark/sherman_cr_0.fastq)\] 
-  * ./Sherman -l 95 -n 100000 -e 0 --genome_folder ./genomeref/ -cr 0
-- sherman_cr_100.fastq \[[download](http://epigenomics.snu.ac.kr/BiSpark/sherman_cr_100.fastq)\]
-  * ./Sherman -l 95 -n 100000 -e 0 --genome_folder ./genomeref/ -cr 100
-- sherman_cr_100_e_3.5.fastq \[[download](http://epigenomics.snu.ac.kr/BiSpark/sherman_cr_100_e_3.5.fastq)\]
-  * ./Sherman -l 95 -n 100000 -e 3.5 --genome_folder ./genomeref/ -cr 100)
-- art_simulation_cr_100.fastq \[[download](http://epigenomics.snu.ac.kr/BiSpark/art_simulation_cr_100.fastq)\]
-  * ./art_illumina -ss HS20 -sam -i ~/genomeref/chr1.fa -l 95 -ef -c 200000 -o art_test
-  * head -400000 art_test.fq > art_simulation.fastq
-  * sed 's/C/T/g' art_simulation.fastq > art_simulation_cr_100.fastq
   
 # Recommended (optional) pre-processing for quality control
 
